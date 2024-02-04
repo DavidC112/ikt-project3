@@ -1,0 +1,4 @@
+repository "proj3@notimportantgems@cloud"
+  path "/"
+    br "/main"
+    co "/main"
