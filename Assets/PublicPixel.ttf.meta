@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77911d3412efa8b41b9a63983dc03d4a
+guid: 3ef23d18e578dea4d8d22883c2c67725
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,10 +9,10 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - CC Wild Words
+  - Public Pixel
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 2
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1

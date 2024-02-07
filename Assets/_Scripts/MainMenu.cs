@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public void StartButton()
     {
 
-        SceneManager.LoadScene("CharacterCreaterMenu");
+        SceneManager.LoadScene("CharacterCreatorMenu");
     }
     public void QuitButton()
     {
