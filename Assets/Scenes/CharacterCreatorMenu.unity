@@ -1222,7 +1222,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 174159202}
         m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
-        m_MethodName: PointsRemove
+        m_MethodName: PointsAdd
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
