@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3eb83ed5c51c0a49bf7f30311cc5eba, type: 3}
-  m_Name: Elf
+  m_Name: Demon
   m_EditorClassIdentifier: 
-  raceSprite: {fileID: 21300000, guid: 5a2aaf1b6bdbf24478f1104fc0414a89, type: 3}
-  vigPoint: 7
-  strPoint: 7
-  dexPoint: 16
+  ID: 4
+  raceSprite: {fileID: 21300000, guid: bc60892c79e11064a93739c9aa80fe9a, type: 3}
+  vigPoint: 8
+  strPoint: 5
+  dexPoint: 7
   endPoint: 10
-  intPoint: 10
+  intPoint: 20

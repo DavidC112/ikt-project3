@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3eb83ed5c51c0a49bf7f30311cc5eba, type: 3}
-  m_Name: Human
+  m_Script: {fileID: 11500000, guid: 34e75058563e1ee49b4052eb61c4a8af, type: 3}
+  m_Name: Axe
   m_EditorClassIdentifier: 
-  raceSprite: {fileID: 21300000, guid: 45b4681be4234b34f80fde3563073cf5, type: 3}
-  vigPoint: 10
-  strPoint: 10
-  dexPoint: 10
-  endPoint: 10
-  intPoint: 10
+  weaponSprite: {fileID: 21300000, guid: 17073c0cabc772142b05fe5ea0bd2bd9, type: 3}
+  weaponDamage: 15

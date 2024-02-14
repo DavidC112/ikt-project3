@@ -551,13 +551,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 55686986}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
         m_MethodName: PointsAdd
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: str
           m_BoolArgument: 0
@@ -609,15 +609,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 55686981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raceStats: {fileID: 0}
-  vigText: {fileID: 0}
-  strText: {fileID: 1617684634}
-  dexText: {fileID: 0}
-  endText: {fileID: 0}
-  intText: {fileID: 0}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000a0000000a0000000a0000000a0000000a000000
 --- !u!1 &85113800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,6 +1148,7 @@ GameObject:
   - component: {fileID: 174159201}
   - component: {fileID: 174159200}
   - component: {fileID: 174159199}
+  - component: {fileID: 174159202}
   m_Layer: 5
   m_Name: Plus Button
   m_TagString: Untagged
@@ -1216,7 +1219,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 174159200}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 174159202}
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
+        m_MethodName: PointsRemove
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: end
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &174159200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1255,6 +1270,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174159197}
   m_CullTransparentMesh: 1
+--- !u!114 &174159202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174159197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000a0000000a0000000a0000000a0000000a000000
 --- !u!1 &248799741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,7 +1922,7 @@ GameObject:
   - component: {fileID: 326970208}
   - component: {fileID: 326970207}
   - component: {fileID: 326970206}
-  - component: {fileID: 326970205}
+  - component: {fileID: 326970209}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -1916,24 +1951,6 @@ RectTransform:
   m_AnchoredPosition: {x: -8.5477295, y: 11.748016}
   m_SizeDelta: {x: 270, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &326970205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326970203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raceStats: {fileID: 0}
-  vigText: {fileID: 0}
-  strText: {fileID: 0}
-  dexText: {fileID: 0}
-  endText: {fileID: 0}
-  intText: {fileID: 0}
 --- !u!114 &326970206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1978,9 +1995,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 326970205}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
-        m_MethodName: PlayButton
+      - m_Target: {fileID: 326970209}
+        m_TargetAssemblyTypeName: SetPlayerStats, Assembly-CSharp
+        m_MethodName: SetPlayerGameObjectStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2028,6 +2045,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326970203}
   m_CullTransparentMesh: 1
+--- !u!114 &326970209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326970203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca16cab101771b478b22d7a55d54d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 549551621}
+  player: {fileID: 11400000, guid: 80a9923e194731f4983e6dbef9fd68e4, type: 2}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
 --- !u!1 &399196257
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,6 +2288,7 @@ GameObject:
   - component: {fileID: 404778298}
   - component: {fileID: 404778297}
   - component: {fileID: 404778296}
+  - component: {fileID: 404778299}
   m_Layer: 5
   m_Name: Minus Button
   m_TagString: Untagged
@@ -2320,7 +2359,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 404778297}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 404778299}
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
+        m_MethodName: PointsRemove
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: end
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &404778297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2359,6 +2410,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404778294}
   m_CullTransparentMesh: 1
+--- !u!114 &404778299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404778294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000a0000000a0000000a0000000a0000000a000000
 --- !u!1 &418148627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,6 +2442,7 @@ GameObject:
   - component: {fileID: 418148631}
   - component: {fileID: 418148630}
   - component: {fileID: 418148629}
+  - component: {fileID: 418148632}
   m_Layer: 5
   m_Name: Minus Button
   m_TagString: Untagged
@@ -2441,7 +2513,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 418148630}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 418148632}
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
+        m_MethodName: PointsRemove
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: int
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &418148630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2480,6 +2564,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418148627}
   m_CullTransparentMesh: 1
+--- !u!114 &418148632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418148627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000a0000000a0000000a0000000a0000000a000000
 --- !u!1 &519602679
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,8 +2726,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2702,6 +2806,7 @@ GameObject:
   - component: {fileID: 529898640}
   - component: {fileID: 529898639}
   - component: {fileID: 529898638}
+  - component: {fileID: 529898641}
   m_Layer: 5
   m_Name: Button <
   m_TagString: Untagged
@@ -2773,7 +2878,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 529898639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 529898641}
+        m_TargetAssemblyTypeName: ChangeClass, Assembly-CSharp
+        m_MethodName: ChangeClassOfPlayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: left
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &529898639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2812,6 +2929,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529898636}
   m_CullTransparentMesh: 1
+--- !u!114 &529898641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529898636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ccb90aa9b5a4d48a2750426b1cb1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  classButton:
+  - {fileID: 1401423996}
+  classText: {fileID: 576528383}
+  classArray:
+  - Warrior
+  - Barabarian
+  - Ranger
+  - Wizard
+  classObjects:
+  - {fileID: 11400000, guid: 266e71d29664e0e4bb50f45880a6ac1a, type: 2}
+  - {fileID: 11400000, guid: 648f8d9f83ca723409e10108a8eadee0, type: 2}
+  - {fileID: 11400000, guid: 311ca0dc21b730b4289ec781a05bf2ef, type: 2}
+  - {fileID: 11400000, guid: 5dd7cb2d26e81dc4a9e872c17a88cda2, type: 2}
+  weaponImage: {fileID: 1503047488}
+  classArrayIndex: 0
 --- !u!1 &549551619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,7 +3054,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 25
-  m_CharacterLimit: 0
+  m_CharacterLimit: 10
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -3020,10 +3164,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2121291599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -12.5}
-  m_SizeDelta: {x: 200, y: 25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 7.5, y: -12.9}
+  m_SizeDelta: {x: -66, y: -53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &576528383
 MonoBehaviour:
@@ -3045,7 +3189,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Knight
+  m_text: Warrior
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 295ca20fa020b4e48a9b2161f223a96b, type: 2}
   m_sharedMaterial: {fileID: -6781042184265724552, guid: 295ca20fa020b4e48a9b2161f223a96b, type: 2}
@@ -3108,7 +3252,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -38.312363, y: 0, z: -32.898674, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3402,7 +3546,7 @@ GameObject:
   - component: {fileID: 611999788}
   - component: {fileID: 611999787}
   - component: {fileID: 611999786}
-  - component: {fileID: 611999785}
+  - component: {fileID: 611999789}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -3431,24 +3575,6 @@ RectTransform:
   m_AnchoredPosition: {x: -8.5477295, y: 11.748016}
   m_SizeDelta: {x: 270, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &611999785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611999783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raceStats: {fileID: 0}
-  vigText: {fileID: 0}
-  strText: {fileID: 0}
-  dexText: {fileID: 0}
-  endText: {fileID: 0}
-  intText: {fileID: 0}
 --- !u!114 &611999786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3493,16 +3619,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 611999785}
-        m_TargetAssemblyTypeName: CharacterCreater, Assembly-CSharp
-        m_MethodName: BackButton
-        m_Mode: 1
+      - m_Target: {fileID: 611999789}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadSceneTo
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &611999787
@@ -3543,6 +3669,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611999783}
   m_CullTransparentMesh: 1
+--- !u!114 &611999789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611999783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1437e1afd405c6549a02eb7512951248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &658514859
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,6 +4011,7 @@ GameObject:
   - component: {fileID: 839753169}
   - component: {fileID: 839753168}
   - component: {fileID: 839753167}
+  - component: {fileID: 839753170}
   m_Layer: 5
   m_Name: Dice
   m_TagString: Untagged
@@ -3942,7 +4081,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 839753168}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 839753170}
+        m_TargetAssemblyTypeName: NameRandomizer, Assembly-CSharp
+        m_MethodName: GenerateName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &839753168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3981,6 +4132,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839753165}
   m_CullTransparentMesh: 1
+--- !u!114 &839753170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839753165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7c85a3d91facd41ac7bd7ca9a1b6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFiealdText: {fileID: 549551621}
+  nameFile: {fileID: 4900000, guid: 0e61f586eec5cd94fb6a6df9ff11abeb, type: 3}
+  names: []
 --- !u!1 &852801472
 GameObject:
   m_ObjectHideFlags: 0
@@ -5025,13 +5191,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1015220232}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
         m_MethodName: PointsAdd
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: dex
           m_BoolArgument: 0
@@ -5083,15 +5249,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1015220227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raceStats: {fileID: 0}
-  vigText: {fileID: 0}
-  strText: {fileID: 0}
-  dexText: {fileID: 601991114}
-  endText: {fileID: 0}
-  intText: {fileID: 0}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000a0000000a0000000a0000000a0000000a000000
 --- !u!1 &1041716446
 GameObject:
   m_ObjectHideFlags: 0
@@ -5524,8 +5692,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1089930468}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
-        m_MethodName: RaceStat
+        m_TargetAssemblyTypeName: RaceStat, Assembly-CSharp
+        m_MethodName: SetRaceStat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5582,15 +5750,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1089930463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: cb631bdc726342543b1b2afc8dbf7e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprite: {fileID: 1450824232}
   raceStats: {fileID: 11400000, guid: f8e909f5f04b2b745a1ae24e960ce0d1, type: 2}
-  vigText: {fileID: 0}
-  strText: {fileID: 1617684634}
-  dexText: {fileID: 601991114}
-  endText: {fileID: 1976296128}
-  intText: {fileID: 1839754006}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  statGameObjects:
+  - {fileID: 2027001704}
+  - {fileID: 2081906405}
+  - {fileID: 1115347023}
+  - {fileID: 55686981}
+  - {fileID: 1171803113}
+  - {fileID: 1015220227}
+  - {fileID: 404778294}
+  - {fileID: 174159197}
+  - {fileID: 418148627}
+  - {fileID: 1241819187}
+  minStatValue: 000000000f0000000f000000040000000f00000001000000
 --- !u!1 &1101871077
 GameObject:
   m_ObjectHideFlags: 0
@@ -5603,7 +5786,6 @@ GameObject:
   - component: {fileID: 1101871080}
   - component: {fileID: 1101871079}
   - component: {fileID: 1101871078}
-  - component: {fileID: 1101871082}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5694,24 +5876,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1101871082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101871077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raceStats: {fileID: 0}
-  vigText: {fileID: 256975625}
-  strText: {fileID: 1617684634}
-  dexText: {fileID: 601991114}
-  endText: {fileID: 1976296128}
-  intText: {fileID: 1839754006}
 --- !u!1 &1115347023
 GameObject:
   m_ObjectHideFlags: 0
@@ -5797,13 +5961,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1115347028}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
         m_MethodName: PointsRemove
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: str
           m_BoolArgument: 0
@@ -5855,15 +6019,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1115347023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raceStats: {fileID: 0}
-  vigText: {fileID: 0}
-  strText: {fileID: 1617684634}
-  dexText: {fileID: 0}
-  endText: {fileID: 0}
-  intText: {fileID: 0}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000a0000000a0000000a0000000a0000000a000000
 --- !u!1 &1135883565
 GameObject:
   m_ObjectHideFlags: 0
@@ -6393,13 +6559,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1171803118}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
         m_MethodName: PointsRemove
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: dex
           m_BoolArgument: 0
@@ -6451,15 +6617,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1171803113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raceStats: {fileID: 0}
-  vigText: {fileID: 0}
-  strText: {fileID: 0}
-  dexText: {fileID: 601991114}
-  endText: {fileID: 0}
-  intText: {fileID: 0}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000a0000000a0000000a0000000a0000000a000000
 --- !u!1 &1241819187
 GameObject:
   m_ObjectHideFlags: 0
@@ -6472,6 +6640,7 @@ GameObject:
   - component: {fileID: 1241819191}
   - component: {fileID: 1241819190}
   - component: {fileID: 1241819189}
+  - component: {fileID: 1241819192}
   m_Layer: 5
   m_Name: Plus Button
   m_TagString: Untagged
@@ -6542,7 +6711,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1241819190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1241819192}
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
+        m_MethodName: PointsAdd
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: int
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1241819190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6581,6 +6762,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241819187}
   m_CullTransparentMesh: 1
+--- !u!114 &1241819192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241819187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000a0000000a0000000a0000000a0000000a000000
 --- !u!1 &1257906986
 GameObject:
   m_ObjectHideFlags: 0
@@ -6594,7 +6795,7 @@ GameObject:
   - component: {fileID: 1257906989}
   - component: {fileID: 1257906988}
   m_Layer: 5
-  m_Name: Attribute List
+  m_Name: Stats List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6968,8 +7169,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7048,6 +7249,7 @@ GameObject:
   - component: {fileID: 1401424000}
   - component: {fileID: 1401423999}
   - component: {fileID: 1401423998}
+  - component: {fileID: 1401424001}
   m_Layer: 5
   m_Name: Button >
   m_TagString: Untagged
@@ -7119,7 +7321,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1401423999}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1401424001}
+        m_TargetAssemblyTypeName: ChangeClass, Assembly-CSharp
+        m_MethodName: ChangeClassOfPlayer
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: right
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1401423999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7158,6 +7372,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401423996}
   m_CullTransparentMesh: 1
+--- !u!114 &1401424001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401423996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ccb90aa9b5a4d48a2750426b1cb1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  classButton:
+  - {fileID: 529898636}
+  classText: {fileID: 576528383}
+  classArray:
+  - Warrior
+  - Barabarian
+  - Ranger
+  - Wizard
+  classObjects:
+  - {fileID: 11400000, guid: 266e71d29664e0e4bb50f45880a6ac1a, type: 2}
+  - {fileID: 11400000, guid: 648f8d9f83ca723409e10108a8eadee0, type: 2}
+  - {fileID: 11400000, guid: 311ca0dc21b730b4289ec781a05bf2ef, type: 2}
+  - {fileID: 11400000, guid: 5dd7cb2d26e81dc4a9e872c17a88cda2, type: 2}
+  weaponImage: {fileID: 1503047488}
+  classArrayIndex: 0
 --- !u!1 &1450824230
 GameObject:
   m_ObjectHideFlags: 0
@@ -7170,7 +7411,7 @@ GameObject:
   - component: {fileID: 1450824233}
   - component: {fileID: 1450824232}
   m_Layer: 5
-  m_Name: Charachter
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7232,6 +7473,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450824230}
+  m_CullTransparentMesh: 1
+--- !u!1 &1503047486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1503047487}
+  - component: {fileID: 1503047489}
+  - component: {fileID: 1503047488}
+  m_Layer: 5
+  m_Name: Class Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1503047487
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503047486}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2133397343}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 177, y: -191}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1503047488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503047486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 5e3572fe6d85e7d43907ada1a6d0d175, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1503047489
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503047486}
   m_CullTransparentMesh: 1
 --- !u!1 &1527279075
 GameObject:
@@ -7828,8 +8144,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1678218568}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
-        m_MethodName: RaceStat
+        m_TargetAssemblyTypeName: RaceStat, Assembly-CSharp
+        m_MethodName: SetRaceStat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7886,15 +8202,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1678218563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: cb631bdc726342543b1b2afc8dbf7e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprite: {fileID: 1450824232}
   raceStats: {fileID: 11400000, guid: 21f31fec8bd914f458a386059b2ba87e, type: 2}
-  vigText: {fileID: 0}
-  strText: {fileID: 1617684634}
-  dexText: {fileID: 601991114}
-  endText: {fileID: 1976296128}
-  intText: {fileID: 1839754006}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  statGameObjects:
+  - {fileID: 2027001704}
+  - {fileID: 2081906405}
+  - {fileID: 1115347023}
+  - {fileID: 55686981}
+  - {fileID: 1171803113}
+  - {fileID: 1015220227}
+  - {fileID: 404778294}
+  - {fileID: 174159197}
+  - {fileID: 418148627}
+  - {fileID: 1241819187}
+  minStatValue: 000000000700000007000000100000000a0000000a000000
 --- !u!1 &1685067202
 GameObject:
   m_ObjectHideFlags: 0
@@ -8418,8 +8749,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8552,8 +8883,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8839,8 +9170,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1798392359}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
-        m_MethodName: RaceStat
+        m_TargetAssemblyTypeName: RaceStat, Assembly-CSharp
+        m_MethodName: SetRaceStat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8897,15 +9228,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1798392354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: cb631bdc726342543b1b2afc8dbf7e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprite: {fileID: 1450824232}
   raceStats: {fileID: 11400000, guid: 9ab9d2be66fcb9c4089e1d8ddcd0ec48, type: 2}
-  vigText: {fileID: 0}
-  strText: {fileID: 1617684634}
-  dexText: {fileID: 601991114}
-  endText: {fileID: 1976296128}
-  intText: {fileID: 1839754006}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  statGameObjects:
+  - {fileID: 2027001704}
+  - {fileID: 2081906405}
+  - {fileID: 1115347023}
+  - {fileID: 55686981}
+  - {fileID: 1171803113}
+  - {fileID: 1015220227}
+  - {fileID: 404778294}
+  - {fileID: 174159197}
+  - {fileID: 418148627}
+  - {fileID: 1241819187}
+  minStatValue: 000000000a0000000a0000000a0000000a0000000a000000
 --- !u!1 &1839754004
 GameObject:
   m_ObjectHideFlags: 0
@@ -9204,8 +9550,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1925439177}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
-        m_MethodName: RaceStat
+        m_TargetAssemblyTypeName: RaceStat, Assembly-CSharp
+        m_MethodName: SetRaceStat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9262,15 +9608,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1925439172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: cb631bdc726342543b1b2afc8dbf7e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprite: {fileID: 1450824232}
   raceStats: {fileID: 11400000, guid: 742092109df1fc047a6e620a72b79a3a, type: 2}
-  vigText: {fileID: 0}
-  strText: {fileID: 1617684634}
-  dexText: {fileID: 601991114}
-  endText: {fileID: 1976296128}
-  intText: {fileID: 1839754006}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  statGameObjects:
+  - {fileID: 2027001704}
+  - {fileID: 2081906405}
+  - {fileID: 1115347023}
+  - {fileID: 55686981}
+  - {fileID: 1171803113}
+  - {fileID: 1015220227}
+  - {fileID: 404778294}
+  - {fileID: 174159197}
+  - {fileID: 418148627}
+  - {fileID: 1241819187}
+  minStatValue: 000000000800000005000000070000000a00000014000000
 --- !u!1 &1956099807
 GameObject:
   m_ObjectHideFlags: 0
@@ -9560,7 +9921,7 @@ GameObject:
   - component: {fileID: 2027001708}
   - component: {fileID: 2027001707}
   - component: {fileID: 2027001706}
-  - component: {fileID: 2027001709}
+  - component: {fileID: 2027001710}
   m_Layer: 5
   m_Name: Minus Button
   m_TagString: Untagged
@@ -9632,14 +9993,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2027001709}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
+      - m_Target: {fileID: 2027001710}
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
         m_MethodName: PointsRemove
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: vig
           m_BoolArgument: 0
@@ -9682,7 +10043,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027001704}
   m_CullTransparentMesh: 1
---- !u!114 &2027001709
+--- !u!114 &2027001710
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9691,15 +10052,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2027001704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raceStats: {fileID: 0}
-  vigText: {fileID: 256975625}
-  strText: {fileID: 0}
-  dexText: {fileID: 0}
-  endText: {fileID: 0}
-  intText: {fileID: 0}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000000000000000000000000000000000000000000
 --- !u!1 &2081906405
 GameObject:
   m_ObjectHideFlags: 0
@@ -9712,7 +10075,7 @@ GameObject:
   - component: {fileID: 2081906409}
   - component: {fileID: 2081906408}
   - component: {fileID: 2081906407}
-  - component: {fileID: 2081906410}
+  - component: {fileID: 2081906411}
   m_Layer: 5
   m_Name: Plus Button
   m_TagString: Untagged
@@ -9784,14 +10147,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2081906410}
-        m_TargetAssemblyTypeName: CharacterCreator, Assembly-CSharp
+      - m_Target: {fileID: 2081906411}
+        m_TargetAssemblyTypeName: ChangeStats, Assembly-CSharp
         m_MethodName: PointsAdd
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: vig
           m_BoolArgument: 0
@@ -9834,7 +10197,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081906405}
   m_CullTransparentMesh: 1
---- !u!114 &2081906410
+--- !u!114 &2081906411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9843,15 +10206,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2081906405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef16e9abfcf39043a8c7b1931a53fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: e1a3778ae94fd274188b5e71a7019ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raceStats: {fileID: 0}
-  vigText: {fileID: 256975625}
-  strText: {fileID: 0}
-  dexText: {fileID: 0}
-  endText: {fileID: 0}
-  intText: {fileID: 0}
+  statsList:
+  - {fileID: 1527279077}
+  - {fileID: 256975625}
+  - {fileID: 1617684634}
+  - {fileID: 601991114}
+  - {fileID: 1976296128}
+  - {fileID: 1839754006}
+  minStatValue: 000000000000000000000000000000000000000000000000
 --- !u!1 &2104152146
 GameObject:
   m_ObjectHideFlags: 0
@@ -10158,8 +10523,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.4869976, y: 3.336956}
-  m_SizeDelta: {x: 266.614, y: 78.711}
+  m_AnchoredPosition: {x: -10.667, y: 3.336956}
+  m_SizeDelta: {x: 302.846, y: 89.408}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2121291600
 MonoBehaviour:
@@ -10364,12 +10729,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2121291599}
+  - {fileID: 1503047487}
   m_Father: {fileID: 278224385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.4870076, y: 16.663042}
-  m_SizeDelta: {x: 268.358, y: 82.616}
+  m_AnchoredPosition: {x: 0.000019073, y: 19.2}
+  m_SizeDelta: {x: 303.197, y: 90.143}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133397344
 MonoBehaviour:
