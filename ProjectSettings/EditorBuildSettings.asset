@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterCreatorMenu.unity
     guid: d0e4e2a876b299f4da700f0e754b89ab
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: bdd416329d483e244bd7e80d8253b58a
+  - enabled: 1
+    path: Assets/Scenes/SettingsAudio.unity
+    guid: aa3ef41d546dad64c842000a93ffd850
+  - enabled: 1
+    path: Assets/Scenes/SettingsVideo.unity
+    guid: f2c3961d287f2d24eac99d98f300358e
   m_configObjects: {}
