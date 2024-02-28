@@ -403,7 +403,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 262994978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d3b43268674ec4aa753b56e2f25c3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4de1da5a848d0da49b14b1be334bf48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 781819624}
@@ -952,7 +952,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 781819622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c257887f0a4c114ab0feb32bcd09f86, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f6f64978dddac14d9c65e1147155a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10.5

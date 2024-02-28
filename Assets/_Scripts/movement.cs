@@ -6,19 +6,40 @@ public class Movement : MonoBehaviour
 {
     public float speed = 10.5f;
     private Rigidbody2D rigidb;
+    [HideInInspector]
+    public Vector2 moveDir;
 
-    void Start()
+    private void Start()
     {
+       
         rigidb = GetComponent<Rigidbody2D>();
+
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        InputManagment();
+    }
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        rigidb.velocity = movement * speed;
+    private void FixedUpdate()
+    {
+        Move();
+    }
+
+    void InputManagment()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
+        moveDir = new Vector2(moveX, moveY).normalized;
+
+
+    }
+
+    void Move()
+    {
+        rigidb.velocity = new Vector2(moveDir.x * speed, moveDir.y * speed);
     }
 }
+
 

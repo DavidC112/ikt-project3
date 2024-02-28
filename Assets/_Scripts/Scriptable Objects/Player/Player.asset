@@ -20,3 +20,5 @@ MonoBehaviour:
   endurance: 15
   intelligence: 1
   meleeWeapon: {fileID: 11400000, guid: 648f8d9f83ca723409e10108a8eadee0, type: 2}
+  isTeamMate: 1
+  teamMate: {fileID: 148486779918306331, guid: a5e01fd2160c4894292981381ff5f5a4, type: 3}

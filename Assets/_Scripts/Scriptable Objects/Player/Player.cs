@@ -14,4 +14,7 @@ public class Player : ScriptableObject
     public int endurance;
     public int intelligence;
     public Weapons meleeWeapon;
+
+    public bool isTeamMate = false;
+    public GameObject teamMate;
 }
