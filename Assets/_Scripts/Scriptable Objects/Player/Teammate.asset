@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 587e4a1bd1f6947498a0884df9b3a5f7, type: 3}
-  m_Name: Player
+  m_Name: Teammate
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  playerName: "Nindr\r"
-  vigor: 15
-  strength: 15
-  dexterity: 4
-  endurance: 15
-  intelligence: 1
-  meleeWeapon: {fileID: 11400000, guid: 648f8d9f83ca723409e10108a8eadee0, type: 2}
-  isTeamMate: 1
-  teamMate: {fileID: 5734502900695785572, guid: c680d8269d7f2e2419e477435e58ef51, type: 3}
+  playerName: 
+  vigor: 10
+  strength: 10
+  dexterity: 10
+  endurance: 10
+  intelligence: 10
+  maxHealth: 20
+  currentHealth: 20
+  meleeWeapon: {fileID: 11400000, guid: 266e71d29664e0e4bb50f45880a6ac1a, type: 2}
+  isTeamMate: 0
+  teamMate: {fileID: 0}

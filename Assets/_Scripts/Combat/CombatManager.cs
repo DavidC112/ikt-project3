@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Build;
@@ -17,17 +18,12 @@ public class CombatManager : MonoBehaviour
     public List<GameObject> unitsInCombat;
     public GameObject currentUnitInTurn;
     public CombatUI combatUI;
-
     public static CombatManager instance;
     public CombatState state;
     public AttackType attackType;
-    public static event Action<CombatState> OnCombatStateChange;
-    public static event Action<AttackType> OnAttackStateChange;
 
     private void Start()
     {
-        ///playerStats = characterPrefab.GetComponent<Unit>().player;
-        
         SpawnInUnits();
         UpdateCombatState(CombatState.PlayerTurn);
 
@@ -47,18 +43,17 @@ public class CombatManager : MonoBehaviour
                 
                 break;
             case CombatState.PlayerTurn:
-                combatUI.ShowActionVisuals(CombatState.PlayerTurn);
+                combatUI.VisalStateChange(true);
                 break;
             case CombatState.EnemyTurn:
                 StartCoroutine(EnemyTurns());
                 break;
             case CombatState.Win:
+                Debug.Log("you have won");
                 break;
             case CombatState.Lose:
                 break;
         }
-
-        OnCombatStateChange?.Invoke(newState);
     }
 
 
@@ -79,11 +74,10 @@ public class CombatManager : MonoBehaviour
 
 
         //Instantiate enemy(s)
-        int enemyNumber = UnityEngine.Random.Range(0, 3);
+        int enemyNumber = UnityEngine.Random.Range(0, enemyPosition.Count);
         for (int i = 0; i < enemyNumber+1; i++) 
         {
-            int enemyIndex = UnityEngine.Random.Range(0, 2);
-            //unitsInCombat[i+2] = Instantiate(enemyPrefabList[enemyIndex], enemyPosition[i].transform);
+            int enemyIndex = UnityEngine.Random.Range(0, enemyPrefabList.Count);
             unitsInCombat.Add(Instantiate(enemyPrefabList[enemyIndex], enemyPosition[i].transform));
         }
 
@@ -91,7 +85,53 @@ public class CombatManager : MonoBehaviour
         UpdateCombatState(CombatState.PlayerTurn);
     }
 
-
+    public void CheckIfCombatEnds()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            int n = 0;
+            switch (i)
+            {
+                // Checks if all player character died
+                case 0:
+                    for (int j = 0; j < 2; j++)
+                    {
+                        //Gatya k�d
+                        if (unitsInCombat[0].activeSelf == false && player.isTeamMate == false)
+                        {
+                            UpdateCombatState(CombatState.Lose);
+                            return;
+                        }
+                        else if (player.isTeamMate)
+                        {
+                            if(unitsInCombat[j].activeSelf == false)
+                                n++;
+                        }
+                        if (n == 2)
+                        {
+                            
+                            UpdateCombatState(CombatState.Lose);
+                        }
+                    }
+                    break;
+                // Checks if all enemy died
+                case 1:
+                    foreach (var enemy in unitsInCombat.Skip(2))
+                    {
+                        if(enemy.activeSelf == false)
+                        {
+                            n++;
+                        }
+                        if(n == unitsInCombat.Count - 2)
+                        {
+                            UpdateCombatState(CombatState.Win);
+                        }
+                    }
+                    break;
+                    
+            }
+        }
+    }
 
     public IEnumerator EnemyTurns()
     {   //valamit majd csinalnak az enemyk
