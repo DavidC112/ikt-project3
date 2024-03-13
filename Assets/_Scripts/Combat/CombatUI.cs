@@ -16,15 +16,8 @@ public class CombatUI : MonoBehaviour
     public void VisalStateChange(bool state)
     {
         _canvas = combatManager.currentUnitInTurn.transform.GetChild(0).gameObject;
-        if (combatManager.currentUnitInTurn.CompareTag("Enemy"))
-        {
-            _canvas.transform.GetChild(1).gameObject.SetActive(state);
-        }
-        else
-        {
-            _canvas.transform.GetChild(0).gameObject.SetActive(state);
-            _canvas.transform.GetChild(1).gameObject.SetActive(state);
-        }
+        _canvas.transform.GetChild(0).gameObject.SetActive(state);
+
     }
 
     public void OnAttack()

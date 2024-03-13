@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Build;
 using UnityEngine;
 
 
@@ -74,10 +70,10 @@ public class CombatManager : MonoBehaviour
 
 
         //Instantiate enemy(s)
-        int enemyNumber = UnityEngine.Random.Range(0, enemyPosition.Count);
+        int enemyNumber = Random.Range(0, enemyPosition.Count);
         for (int i = 0; i < enemyNumber+1; i++) 
         {
-            int enemyIndex = UnityEngine.Random.Range(0, enemyPrefabList.Count);
+            int enemyIndex = Random.Range(0, enemyPrefabList.Count);
             unitsInCombat.Add(Instantiate(enemyPrefabList[enemyIndex], enemyPosition[i].transform));
         }
 
@@ -96,9 +92,10 @@ public class CombatManager : MonoBehaviour
                 case 0:
                     for (int j = 0; j < 2; j++)
                     {
-                        //Gatya kï¿½d
+                        //Gatya kód
                         if (unitsInCombat[0].activeSelf == false && player.isTeamMate == false)
                         {
+                            Debug.Log("what");
                             UpdateCombatState(CombatState.Lose);
                             return;
                         }
@@ -134,10 +131,50 @@ public class CombatManager : MonoBehaviour
     }
 
     public IEnumerator EnemyTurns()
-    {   //valamit majd csinalnak az enemyk
-        Debug.Log("Enemy Turn");
-        yield return new WaitForSeconds(1);
-        currentUnitInTurn = unitsInCombat[0]; 
+    {   //valamit csinalnak az enemyk
+        Debug.Log(unitsInCombat.Count);
+        for (int i = 2; i < unitsInCombat.Count; i++)
+        {
+            currentUnitInTurn = unitsInCombat[i];
+            Unit currentUnit = currentUnitInTurn.GetComponent<Unit>();
+            int enemyDamage = (currentUnit.player.strength + currentUnit.player.dexterity + 15) / 8;
+            //GameObject damagedCharacter = unitsInCombat[Random.Range(0, 2)];
+            List<GameObject> damagableCharacter = new();
+            int rnd = Random.Range(0, damagableCharacter.Count);
+
+            foreach (var item in unitsInCombat.Skip(-4))
+            {
+                if (item.activeSelf == true)
+                {
+                    damagableCharacter.Add(item);
+                }
+            }
+
+            combatUI.VisalStateChange(true);
+
+            if (damagableCharacter[rnd].GetComponent<Unit>().TakeDamage(enemyDamage))
+            {
+                damagableCharacter[rnd].SetActive(false);
+            }
+            Debug.Log("Enemy Turn");
+            damagableCharacter[rnd].GetComponent<Unit>().SetHP(damagableCharacter[rnd].GetComponent<Unit>().currentHealth);
+
+            combatUI.VisalStateChange(false);
+
+            CheckIfCombatEnds();
+
+            yield return new WaitForSeconds(1);
+        }
+        //elit hibakezeles
+        if (unitsInCombat[0].activeSelf == true) 
+        {
+            currentUnitInTurn = unitsInCombat[0];
+        }
+        else
+        {
+            currentUnitInTurn = unitsInCombat[1];
+        }
+        
         UpdateCombatState(CombatState.PlayerTurn);
 
     }

@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class Unit : MonoBehaviour
 {
     public Player player;
-    [HideInInspector] public int maxHealth;
-    [HideInInspector] public int currentHealth;
-    [HideInInspector] public int maxPP;
-     public int currentPP;
+    public int maxHealth;
+    public int currentHealth;
+    public int maxPP;
+    public int currentPP;
     public Slider hpSlider;
     public Slider ppSlider;
 
@@ -42,7 +42,7 @@ public class Unit : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth < 0 ) 
+        if (currentHealth <= 0 ) 
             return true;
         else 
             return false;

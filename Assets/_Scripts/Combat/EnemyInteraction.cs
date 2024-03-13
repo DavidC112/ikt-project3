@@ -84,7 +84,16 @@ public class EnemyInteraction : MonoBehaviour
         {
 
             combatUI.VisalStateChange(false);
-            combatManager.currentUnitInTurn = combatManager.unitsInCombat[1];
+            if (combatManager.unitsInCombat[1].activeSelf == true)
+            {
+                combatManager.currentUnitInTurn = combatManager.unitsInCombat[1];
+            }
+            else
+            {
+                combatManager.UpdateCombatState(CombatState.EnemyTurn);
+                combatManager.currentUnitInTurn = combatManager.unitsInCombat[2];
+            }
+            
             combatUI.VisalStateChange(true);
         }
         else
