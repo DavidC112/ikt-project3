@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5272551541785213746}
   - component: {fileID: 4435529038365073033}
-  - component: {fileID: 7313726191097902734}
   - component: {fileID: 6399563770768119441}
   m_Layer: 0
   m_Name: EnemyLocation_0
@@ -90,22 +89,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7313726191097902734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3734706864555666524}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df734dcad5c8364c818da14c017dd77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedEnemy: {fileID: 0}
-  highlight: {fileID: 0}
-  combatUI: {fileID: 0}
-  combatManager: {fileID: 0}
 --- !u!61 &6399563770768119441
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ public class EnemyInteraction : MonoBehaviour
         }
 
         //TODO: ha nincs mar tobb pp akkor nem lehet hasznalni
-        else if (combatManager.attackType == AttackType.Ability && combatManager.state == CombatState.PlayerTurn)
+        else if (combatManager.attackType == AttackType.Ability && combatManager.state == CombatState.PlayerTurn && currentUnit.currentPP > 20)
         {
             
             highlight.SetActive(true);

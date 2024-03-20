@@ -45,9 +45,12 @@ public class CombatManager : MonoBehaviour
                 StartCoroutine(EnemyTurns());
                 break;
             case CombatState.Win:
-                Debug.Log("you have won");
+                Debug.Log("WIN");
+                StopAllCoroutines();
                 break;
             case CombatState.Lose:
+                Debug.Log("LOSE");
+                StopAllCoroutines();
                 break;
         }
     }
@@ -59,7 +62,7 @@ public class CombatManager : MonoBehaviour
         //Instantiate player;
         if (player.isTeamMate == false)
         {
-            unitsInCombat[0] =Instantiate(characterPrefab, playerPositions[0].transform);
+            unitsInCombat[0] = Instantiate(characterPrefab, playerPositions[0].transform);
             unitsInCombat[1] = null;
         }
         else
@@ -81,7 +84,7 @@ public class CombatManager : MonoBehaviour
         UpdateCombatState(CombatState.PlayerTurn);
     }
 
-    public void CheckIfCombatEnds()
+    public CombatState CheckIfCombatEnds()
     {
         for (int i = 0; i < 2; i++)
         {
@@ -92,23 +95,15 @@ public class CombatManager : MonoBehaviour
                 case 0:
                     for (int j = 0; j < 2; j++)
                     {
-                        //Gatya kód
                         if (unitsInCombat[0].activeSelf == false && player.isTeamMate == false)
                         {
-                            Debug.Log("what");
-                            UpdateCombatState(CombatState.Lose);
-                            return;
+                            return CombatState.Lose;
                         }
-                        else if (player.isTeamMate)
+                        if (player.isTeamMate && unitsInCombat[0].activeSelf == false && unitsInCombat[0].activeSelf == false)
                         {
-                            if(unitsInCombat[j].activeSelf == false)
-                                n++;
+                            return CombatState.Lose;
                         }
-                        if (n == 2)
-                        {
-                            
-                            UpdateCombatState(CombatState.Lose);
-                        }
+
                     }
                     break;
                 // Checks if all enemy died
@@ -121,62 +116,83 @@ public class CombatManager : MonoBehaviour
                         }
                         if(n == unitsInCombat.Count - 2)
                         {
-                            UpdateCombatState(CombatState.Win);
+                            return CombatState.Win;
                         }
                     }
                     break;
                     
             }
         }
+        if (currentUnitInTurn == unitsInCombat[0] || currentUnitInTurn == unitsInCombat[1])
+        {
+            return CombatState.PlayerTurn;
+        }
+        else
+        {
+            return CombatState.EnemyTurn;
+        }
+        
     }
 
     public IEnumerator EnemyTurns()
     {   //valamit csinalnak az enemyk
-        Debug.Log(unitsInCombat.Count);
         for (int i = 2; i < unitsInCombat.Count; i++)
         {
             currentUnitInTurn = unitsInCombat[i];
-            Unit currentUnit = currentUnitInTurn.GetComponent<Unit>();
-            int enemyDamage = (currentUnit.player.strength + currentUnit.player.dexterity + 15) / 8;
-            //GameObject damagedCharacter = unitsInCombat[Random.Range(0, 2)];
-            List<GameObject> damagableCharacter = new();
-            int rnd = Random.Range(0, damagableCharacter.Count);
-
-            foreach (var item in unitsInCombat.Skip(-4))
+            if (currentUnitInTurn.activeSelf == true || state != CombatState.Lose || state != CombatState.Win)
             {
-                if (item.activeSelf == true)
+                Unit currentUnit = currentUnitInTurn.GetComponent<Unit>();
+                int enemyDamage = (currentUnit.player.strength + currentUnit.player.dexterity + 15) / 8;
+
+                List<GameObject> damagableCharacter = new();
+
+                for (int j = 0; j < 2; j++)
                 {
-                    damagableCharacter.Add(item);
+                    if (unitsInCombat[j].activeSelf == true)
+                    {
+                        damagableCharacter.Add(unitsInCombat[j]);
+                    }
+                    if(player.isTeamMate == false)
+                    {
+                        j++;
+                    }
+                }
+
+                if (damagableCharacter.Count == 0)
+                {
+                    UpdateCombatState(CombatState.Lose);
+                    yield return 0;
+                }
+                else
+                {
+                    int rnd = Random.Range(0, damagableCharacter.Count);
+                    Debug.Log(rnd + "indexu playercharacter");
+
+                    combatUI.VisalStateChange(true);
+
+                    if (damagableCharacter[rnd].GetComponent<Unit>().TakeDamage(enemyDamage))
+                    {
+                        damagableCharacter[rnd].SetActive(false);
+                    }
+                    damagableCharacter[rnd].GetComponent<Unit>().SetHP(damagableCharacter[rnd].GetComponent<Unit>().currentHealth);
+
+                    combatUI.VisalStateChange(false);
+
+                    yield return new WaitForSeconds(1);
                 }
             }
-
-            combatUI.VisalStateChange(true);
-
-            if (damagableCharacter[rnd].GetComponent<Unit>().TakeDamage(enemyDamage))
-            {
-                damagableCharacter[rnd].SetActive(false);
-            }
-            Debug.Log("Enemy Turn");
-            damagableCharacter[rnd].GetComponent<Unit>().SetHP(damagableCharacter[rnd].GetComponent<Unit>().currentHealth);
-
-            combatUI.VisalStateChange(false);
-
-            CheckIfCombatEnds();
-
-            yield return new WaitForSeconds(1);
+            
+            
         }
-        //elit hibakezeles
         if (unitsInCombat[0].activeSelf == true) 
         {
             currentUnitInTurn = unitsInCombat[0];
         }
-        else
+        else if (unitsInCombat[1].activeSelf == true && unitsInCombat != null)
         {
             currentUnitInTurn = unitsInCombat[1];
         }
-        
-        UpdateCombatState(CombatState.PlayerTurn);
-
+        UpdateCombatState(CheckIfCombatEnds());
     }
 }
 public enum CombatState
