@@ -20,4 +20,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SettingsVideo.unity
     guid: f2c3961d287f2d24eac99d98f300358e
+  - enabled: 1
+    path: Assets/Scenes/BuckaTreasureScene.unity
+    guid: 29f021e0e45a5a84a86b49790618713d
+  - enabled: 1
+    path: Assets/Scenes/BuckaScene.unity
+    guid: 88745be1d109f914e856c7aeb9edd5d3
+  - enabled: 1
+    path: Assets/Scenes/Combat.unity
+    guid: a1e1b1fd6bb1b7641aa1f67d73e9fe39
+  - enabled: 1
+    path: Assets/Scenes/ForestScene.unity
+    guid: 419c756d7d19b13438a353e75a7ca40d
+  - enabled: 1
+    path: Assets/Scenes/LakeScene.unity
+    guid: 4dfddcdfc87b9b74d81c154dfc89bab4
+  - enabled: 1
+    path: Assets/Scenes/PubScene.unity
+    guid: 267a9ecd1b1480740a18f25cefe4ee00
+  - enabled: 1
+    path: Assets/Scenes/RoadScene.unity
+    guid: efd7dc4699e743d4386a2f7e41dfa681
+  - enabled: 1
+    path: Assets/Scenes/TownHall.unity
+    guid: df27ef4e80d9cff40b8e33f6493d7419
+  - enabled: 1
+    path: Assets/Scenes/TownScene.unity
+    guid: 0eca4cd081bd8464f9de58638f7105dd
   m_configObjects: {}
