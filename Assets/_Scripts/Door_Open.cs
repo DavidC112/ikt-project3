@@ -19,7 +19,6 @@ public class Door_Open : MonoBehaviour
             player = true;
             PlayerPrefs.SetFloat("PlayerPosX", playerPos.x);
             PlayerPrefs.SetFloat("PlayerPosY", playerPos.y);
-            Debug.Log($"{playerPos.x} {playerPos.y}");
         }
     }
     void Update()
