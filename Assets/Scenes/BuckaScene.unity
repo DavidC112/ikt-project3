@@ -587,7 +587,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 1d1869e99d67a11499b3a9461dc60983, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 468b68337f1be2a489ea58b4664dd608, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 753442346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c257887f0a4c114ab0feb32bcd09f86, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f6f64978dddac14d9c65e1147155a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10.5
@@ -16865,6 +16865,7 @@ GameObject:
   - component: {fileID: 1063672101}
   - component: {fileID: 1063672100}
   - component: {fileID: 1063672103}
+  - component: {fileID: 1063672104}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16955,10 +16956,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1063672099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d3b43268674ec4aa753b56e2f25c3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4de1da5a848d0da49b14b1be334bf48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 753442348}
+--- !u!114 &1063672104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063672099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 16
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_UpscaleRT: 1
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1001 &1199871861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17673,8 +17694,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c56679ce9c29314d8815c08be5c0769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToload: BuckaTreasureScene
-  player: 0
 --- !u!1001 &1938419713
 PrefabInstance:
   m_ObjectHideFlags: 0
