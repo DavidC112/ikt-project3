@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
 {
@@ -46,6 +46,8 @@ public class CombatManager : MonoBehaviour
                 break;
             case CombatState.Win:
                 Debug.Log("WIN");
+                player.combat = true;
+                SceneManager.LoadScene(player.sceneToSpawnBack);
                 StopAllCoroutines();
                 break;
             case CombatState.Lose:

@@ -13,11 +13,11 @@ public class Player : ScriptableObject
     public int dexterity;
     public int endurance;
     public int intelligence;
-    //public int maxHealth;
-    //public int currentHealth;
-    //public int maxPP;
-    //public int currentPP;
-    
+    public Vector2 playerLocation;
+    public string sceneToSpawnBack;
+
+    public bool combat;
+
     public Weapons meleeWeapon;
 
     public bool isTeamMate = false;

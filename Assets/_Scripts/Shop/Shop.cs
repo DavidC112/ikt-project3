@@ -21,7 +21,7 @@ public class Shop : MonoBehaviour
 
     public void ToggleMenu(bool collided)
     {
-        if (Input.GetKeyDown("space") && collided)
+        if (Input.GetKeyDown("e") && collided)
         {
             menuUI.SetActive(!menuUI.activeSelf);
         }

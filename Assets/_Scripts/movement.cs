@@ -8,12 +8,13 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rigidb;
     [HideInInspector]
     public Vector2 moveDir;
+    private LoadToCombat encounter;
 
     private void Start()
     {
        
         rigidb = GetComponent<Rigidbody2D>();
-
+        encounter = GetComponent<LoadToCombat>();
     }
 
     void Update()
@@ -32,13 +33,18 @@ public class Movement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDir = new Vector2(moveX, moveY).normalized;
-
+        
 
     }
 
     void Move()
     {
         rigidb.velocity = new Vector2(moveDir.x * speed, moveDir.y * speed);
+
+        if (encounter != null)
+        {
+            encounter.CheckForEncounters();
+        }
     }
 }
 

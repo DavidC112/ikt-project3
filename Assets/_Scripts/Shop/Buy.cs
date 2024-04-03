@@ -16,6 +16,7 @@ public class Buy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Test"))
         {
+            collision.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             player = true;
         }
     }
@@ -29,6 +30,7 @@ public class Buy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Test"))
         {
+            collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             player = false;
             Shop.menuUI.SetActive(false);
         }

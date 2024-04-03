@@ -16,6 +16,7 @@ public class Door_Open : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Test"))
         {
+            collision.gameObject.transform.GetChild(0).gameObject.SetActive(true);
             player = true;
             PlayerPrefs.SetFloat("PlayerPosX", playerPos.x);
             PlayerPrefs.SetFloat("PlayerPosY", playerPos.y);
@@ -29,7 +30,8 @@ public class Door_Open : MonoBehaviour
    
     private void OnTriggerExit2D(Collider2D collision)
     {
-            player = false;   
+            player = false;
+            collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void Doors()

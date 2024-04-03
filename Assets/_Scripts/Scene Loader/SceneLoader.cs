@@ -15,4 +15,14 @@ public class SceneLoader : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public string sceneToload;
+    public Vector2 playerPos;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerPrefs.SetFloat("PlayerPosX", playerPos.x);
+        PlayerPrefs.SetFloat("PlayerPosY", playerPos.y);
+        SceneManager.LoadScene(sceneToload);
+    }
 }

@@ -19,6 +19,9 @@ MonoBehaviour:
   dexterity: 4
   endurance: 15
   intelligence: 1
+  playerLocation: {x: -4.2823095, y: -13.5098095}
+  sceneToSpawnBack: Route1
+  combat: 0
   meleeWeapon: {fileID: 11400000, guid: 648f8d9f83ca723409e10108a8eadee0, type: 2}
   isTeamMate: 1
   teamMate: {fileID: 5734502900695785572, guid: c680d8269d7f2e2419e477435e58ef51, type: 3}

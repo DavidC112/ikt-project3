@@ -5,17 +5,20 @@ using UnityEngine;
 public class LoadPlayer : MonoBehaviour
 {
     private float x, y;
+    [SerializeField ]private Player player;
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Test");
-        x = PlayerPrefs.GetFloat("PlayerPosX");
-        y = PlayerPrefs.GetFloat("PlayerPosY");
-        Debug.Log(x + " " + y);
-        player.transform.position = new Vector2(x, y);
-    }
-
-    void Update()
-    {
-        
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Test");
+        if (player != null && player.combat)
+        {
+            playerObj.transform.position = player.playerLocation;
+        }
+        else
+        {
+            x = PlayerPrefs.GetFloat("PlayerPosX");
+            y = PlayerPrefs.GetFloat("PlayerPosY");
+            Debug.Log(x + " " + y);
+            playerObj.transform.position = new Vector2(x, y);
+        }
     }
 }
