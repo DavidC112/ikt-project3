@@ -7,10 +7,24 @@ using TMPro;
 public class Gold_minus : MonoBehaviour
 {
     public TMP_Text goldText;
-    public int gold = 20;
-    public int kobambi;
-    public int meggypalesz;
-    public int abszint;
+    public TMP_Text kobambi_db;
+    public TMP_Text meggypalesz_db;
+    public TMP_Text abszint_db;
+    public int gold;
+    private int kobambi;
+    private int meggypalesz;
+    private int abszint;
+    
+    void Awake()
+    {
+        gold = PlayerPrefs.GetInt("gold");
+       // kobambi = PlayerPrefs.GetInt("kobambi");
+        meggypalesz = PlayerPrefs.GetInt("meggypalesz");
+        abszint = PlayerPrefs.GetInt("abszint");
+        kobambi_db.text = $"{kobambi} db";
+        meggypalesz_db.text = $"{meggypalesz} db";
+        abszint_db.text = $"{abszint} db";
+    }
 
     void Update()
     {
@@ -24,6 +38,8 @@ public class Gold_minus : MonoBehaviour
             kobambi++;
             gold -= 5;
             PlayerPrefs.SetInt("kobambi", kobambi);
+            PlayerPrefs.SetInt("gold", gold);
+            kobambi_db.text = $"{kobambi} db";
         }
     }
     public void BuyMP()
@@ -32,7 +48,9 @@ public class Gold_minus : MonoBehaviour
         {
             meggypalesz++;
             gold -= 5;
+            PlayerPrefs.SetInt("gold", gold);
             PlayerPrefs.SetInt("meggypalesz", meggypalesz);
+            meggypalesz_db.text = $"{meggypalesz} db";
         }
     }
     public void BuyAB()
@@ -41,7 +59,10 @@ public class Gold_minus : MonoBehaviour
         {
             abszint++;
             gold -= 5;
+            PlayerPrefs.SetInt("gold", gold);
             PlayerPrefs.SetInt("abszint", abszint);
+            abszint_db.text = $"{abszint} db";
+
         }
     }
 

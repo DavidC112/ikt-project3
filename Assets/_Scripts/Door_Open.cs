@@ -31,7 +31,7 @@ public class Door_Open : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
             player = false;
-            collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+           collision.gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void Doors()

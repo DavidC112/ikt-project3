@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
+
+
 public class PlayerInteract : MonoBehaviour
 {
     public GameObject DialogPanel;
     public TMP_Text DialogText;
     public string[] dialogue;
     private int index;
+    public Button buy;
 
     public GameObject continueBtn;
     public float wordSpeed;
     public bool PlayerIsClose;
+    public Player player;
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.E) && PlayerIsClose)
         {
             if (DialogPanel.activeInHierarchy)
@@ -60,7 +66,7 @@ public class PlayerInteract : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Test"))
         {
             PlayerIsClose = true;
         }
@@ -68,11 +74,34 @@ public class PlayerInteract : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Test"))
         {
             PlayerIsClose = false;
             zeroText();
         }
 
     }
+
+    public void Gift()
+    {
+        int kobambi = PlayerPrefs.GetInt("kobambi");
+
+        if (kobambi > 0)
+        {
+            kobambi--;
+            PlayerPrefs.SetInt("kobambi", kobambi);
+            Debug.Log($"Köbambi{kobambi}");
+            Csoves();
+        }
+        else
+        {
+            buy.gameObject.SetActive(true);
+        }
+
+    }
+
+    public void Csoves()
+    {
+        player.isTeamMate = true;
+    }     
 }

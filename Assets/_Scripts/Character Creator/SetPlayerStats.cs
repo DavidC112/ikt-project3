@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SetPlayerStats : MonoBehaviour
@@ -26,6 +27,9 @@ public class SetPlayerStats : MonoBehaviour
         player.endurance = int.Parse(statsList[4].text);
         player.intelligence = int.Parse(statsList[5].text);
         player.meleeWeapon = ChangeClass.selectedClass;
+        PlayerPrefs.SetInt("gold", 20);
+
+        SceneManager.LoadScene("TownHall");
     }
     string GetNameFromInputField()
     {
