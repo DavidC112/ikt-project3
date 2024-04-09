@@ -9,10 +9,10 @@ public class Movement : MonoBehaviour
     [HideInInspector]
     public Vector2 moveDir;
     private LoadToCombat encounter;
+    public Animator animator;
 
     private void Start()
     {
-       
         rigidb = GetComponent<Rigidbody2D>();
         encounter = GetComponent<LoadToCombat>();
     }
@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         InputManagment();
+        Animation();
     }
 
     private void FixedUpdate()
@@ -45,6 +46,12 @@ public class Movement : MonoBehaviour
         {
             encounter.CheckForEncounters();
         }
+    }
+    void Animation()
+    {
+        animator.SetFloat("Horizontal", moveDir.x);
+        animator.SetFloat("Vertical", moveDir.y);
+        animator.SetFloat("Speed", moveDir.sqrMagnitude);
     }
 }
 

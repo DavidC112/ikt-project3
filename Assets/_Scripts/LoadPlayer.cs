@@ -20,5 +20,6 @@ public class LoadPlayer : MonoBehaviour
             Debug.Log(x + " " + y);
             playerObj.transform.position = new Vector2(x, y);
         }
+        gameObject.GetComponent<Animator>().runtimeAnimatorController = player.animation;
     }
 }

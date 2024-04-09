@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3eb83ed5c51c0a49bf7f30311cc5eba, type: 3}
   m_Name: Human
   m_EditorClassIdentifier: 
-  ID: 0
-  raceSprite: {fileID: 21300000, guid: 45b4681be4234b34f80fde3563073cf5, type: 3}
+  raceSprite: {fileID: -499925566, guid: 45b4681be4234b34f80fde3563073cf5, type: 3}
+  raceAnimation: {fileID: 9100000, guid: 3616c4230c41ebd4ea97202526461ac1, type: 2}
   vigPoint: 10
   strPoint: 10
   dexPoint: 10

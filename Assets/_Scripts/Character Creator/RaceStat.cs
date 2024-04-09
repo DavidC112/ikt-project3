@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class RaceStat : MonoBehaviour
     public List<GameObject> statGameObjects;
     public List<int> minStatValue;
     private int remainingPoints;
+    public static AnimatorController animaton;
 
     public void SetRaceStat()
     {
@@ -22,7 +24,8 @@ public class RaceStat : MonoBehaviour
         statsList[3].text = raceStats.dexPoint.ToString();
         statsList[4].text = raceStats.endPoint.ToString();
         statsList[5].text = raceStats.intPoint.ToString();
-        playerSprite.sprite = raceStats.raceSprite;  
+        playerSprite.sprite = raceStats.raceSprite;
+        animaton = raceStats.raceAnimation;
 
         SetMinStatForOtherObjects(statGameObjects);
     }
