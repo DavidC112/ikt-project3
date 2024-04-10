@@ -23,5 +23,5 @@ MonoBehaviour:
   sceneToSpawnBack: Route1
   combat: 0
   meleeWeapon: {fileID: 11400000, guid: 266e71d29664e0e4bb50f45880a6ac1a, type: 2}
-  isTeamMate: 0
+  isTeamMate: 1
   teamMate: {fileID: 5734502900695785572, guid: c680d8269d7f2e2419e477435e58ef51, type: 3}

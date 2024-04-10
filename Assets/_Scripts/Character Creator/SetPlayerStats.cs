@@ -11,7 +11,14 @@ public class SetPlayerStats : MonoBehaviour
     public TMP_InputField inputField;
     public Player player;
     public List<TMP_Text> statsList;
+<<<<<<< Updated upstream
     public AnimatorController animation;
+=======
+    void Start()
+    {
+        player.isTeamMate = false;
+    }
+>>>>>>> Stashed changes
     public void SetPlayerGameObjectStats()
     {
         //TODO: Valami felugro ablak, hogy kell beírni nevet
