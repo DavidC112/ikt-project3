@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587e4a1bd1f6947498a0884df9b3a5f7, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  animation: {fileID: 9100000, guid: 643ae9e6bfcbf934287d5a0f1d235bb2, type: 2}
   playerName: "Corym\r"
   vigor: 10
   strength: 10

@@ -12,8 +12,6 @@ public class PlayerInteract : MonoBehaviour
     public TMP_Text DialogText;
     public string[] dialogue;
     private int index;
-    public Button buy;
-
     public GameObject continueBtn;
     public float wordSpeed;
     public bool PlayerIsClose;
@@ -95,7 +93,7 @@ public class PlayerInteract : MonoBehaviour
         }
         else
         {
-            buy.gameObject.SetActive(true);
+            Debug.Log("No Köbambi :(");
         }
 
     }
