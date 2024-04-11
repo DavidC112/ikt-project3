@@ -5,12 +5,14 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
 
-public class Player_Interact : MonoBehaviour
+
+public class PlayerInteract : MonoBehaviour
 {
     public GameObject DialogPanel;
     public TMP_Text DialogText;
     public string[] dialogue;
     private int index;
+    public Button buy;
 
     public GameObject continueBtn;
     public float wordSpeed;
@@ -35,19 +37,19 @@ public class Player_Interact : MonoBehaviour
         {
             continueBtn.SetActive(true);
         }
-
+        
     }
     public void zeroText()
     {
         DialogText.text = "";
-        index = 0;
+        index= 0;
         DialogPanel.SetActive(false);
     }
     IEnumerator Typing()
     {
         foreach (char letter in dialogue[index].ToCharArray())
         {
-            DialogText.text += letter;
+            DialogText.text+= letter;
             yield return new WaitForSeconds(wordSpeed);
         }
     }
@@ -55,7 +57,7 @@ public class Player_Interact : MonoBehaviour
     {
         continueBtn.SetActive(false);
 
-        if (index < dialogue.Length - 1)
+        if (index< dialogue.Length-1)
         {
             index++;
             DialogText.text = "";
@@ -68,7 +70,7 @@ public class Player_Interact : MonoBehaviour
         {
             PlayerIsClose = true;
         }
-
+        
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -79,4 +81,27 @@ public class Player_Interact : MonoBehaviour
         }
 
     }
+
+    public void Gift()
+    {
+        int kobambi = PlayerPrefs.GetInt("kobambi");
+
+        if (kobambi > 0)
+        {
+            kobambi--;
+            PlayerPrefs.SetInt("kobambi", kobambi);
+            Debug.Log($"Köbambi{kobambi}");
+            Csoves();
+        }
+        else
+        {
+            buy.gameObject.SetActive(true);
+        }
+
+    }
+
+    public void Csoves()
+    {
+        player.isTeamMate = true;
+    }     
 }
