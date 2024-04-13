@@ -16,11 +16,15 @@ public class PlayerInteract : MonoBehaviour
     public float wordSpeed;
     public bool PlayerIsClose;
     public Player player;
+    public Button quit;
+    public static bool conv;
+
     void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.E) && PlayerIsClose)
         {
+            conv = true;
             if (DialogPanel.activeInHierarchy)
             {
                 zeroText();
@@ -49,6 +53,7 @@ public class PlayerInteract : MonoBehaviour
         {
             DialogText.text+= letter;
             yield return new WaitForSeconds(wordSpeed);
+            continueBtn.SetActive(false);
         }
     }
     public void NextLine()
@@ -102,4 +107,9 @@ public class PlayerInteract : MonoBehaviour
     {
         player.isTeamMate = true;
     }     
+
+    public void Quit()
+    {
+        conv = false;
+    }
 }

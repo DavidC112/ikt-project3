@@ -36,6 +36,8 @@ public class SetPlayerStats : MonoBehaviour
         PlayerPrefs.SetInt("gold", 20);
         PlayerPrefs.SetFloat("PlayerPosX", 2.99f);
         PlayerPrefs.SetFloat("PlayerPosY", -0.7f);
+        PlayerPrefs.SetInt("key1", 0);
+        PlayerPrefs.SetInt("key2", 0);
         SceneManager.LoadScene("TownHall");
     }
     string GetNameFromInputField()

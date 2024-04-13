@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -10,6 +12,7 @@ public class Movement : MonoBehaviour
     public Vector2 moveDir;
     private LoadToCombat encounter;
     public Animator animator;
+    PlayerInteract vmi;
 
     private void Start()
     {
@@ -40,7 +43,8 @@ public class Movement : MonoBehaviour
 
     void Move()
     {
-        rigidb.velocity = new Vector2(moveDir.x * speed, moveDir.y * speed);
+        if (PlayerInteract.conv == false)
+        { rigidb.velocity = new Vector2(moveDir.x * speed, moveDir.y * speed); }
 
         if (encounter != null)
         {
