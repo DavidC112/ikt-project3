@@ -108,13 +108,26 @@ public class EnemyInteraction : MonoBehaviour
         //Ha elfogy enemy hpja akkor deaktivalva lesz az enemy  gamobject
         if (selectedEnemy.GetComponent<Unit>().TakeDamage(damageToEnemy))
         {
-            selectedEnemy.SetActive(false);
+            UnAliveEnemy();
         }
-        selectedEnemy.GetComponent<Unit>().SetHP(selectedEnemy.GetComponent<Unit>().currentHealth);      
-        combatManager.CheckIfCombatEnds();
+        selectedEnemy.GetComponent<Unit>().SetHP(selectedEnemy.GetComponent<Unit>().currentHealth);
+        combatManager.UpdateCombatState(combatManager.CheckIfCombatEnds());
+        Debug.Log("check if combat ends");
         yield return new WaitForSeconds(0.1f);
         bars.SetActive(false);
         
 
+    }
+
+    private void UnAliveEnemy()
+    {
+        selectedEnemy.SetActive(false);
+        for (int i = 0; i < combatManager.aliveEnemys.Count; i++)
+        {
+            if (combatManager.aliveEnemys[i] == selectedEnemy)
+            {
+                combatManager.aliveEnemys.RemoveAt(i);
+            }
+        }
     }
 }

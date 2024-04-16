@@ -10,14 +10,13 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rigidb;
     [HideInInspector]
     public Vector2 moveDir;
-    private LoadToCombat encounter;
+    public LoadToCombat encounter;
     public Animator animator;
     PlayerInteract vmi;
 
     private void Start()
     {
         rigidb = GetComponent<Rigidbody2D>();
-        encounter = GetComponent<LoadToCombat>();
     }
 
     void Update()

@@ -32182,6 +32182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10.5
   moveDir: {x: 0, y: 0}
+  encounter: {fileID: 2143091560}
   animator: {fileID: 1755962404}
 --- !u!212 &1755962410
 SpriteRenderer:
@@ -47248,13 +47249,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143091556}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d69225b8c66b4bd41af0b0a48b687eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 80a9923e194731f4983e6dbef9fd68e4, type: 2}
-  playerGameObject: {fileID: 0}
+  playerGameObject: {fileID: 1755962403}
   bushes:
     serializedVersion: 2
     m_Bits: 64

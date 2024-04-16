@@ -12,6 +12,7 @@ public class LoadPlayer : MonoBehaviour
         if (player != null && player.combat)
         {
             playerObj.transform.position = player.playerLocation;
+            player.combat = false;
         }
         else
         {
