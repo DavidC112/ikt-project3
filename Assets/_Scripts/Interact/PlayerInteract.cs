@@ -18,7 +18,15 @@ public class PlayerInteract : MonoBehaviour
     public Player player;
     public Button quit;
     public static bool conv;
+    public static bool boss;
 
+    private void Start()
+    {
+        if (CombatManager.bossDead == true && gameObject.tag == "boss")
+        {
+            Destroy(gameObject);
+        }
+    }
     void Update()
     {
 
@@ -123,5 +131,14 @@ public class PlayerInteract : MonoBehaviour
     public void Quit()
     {
         conv = false;
+    }
+
+    public void BossFight()
+    {
+        boss = true;
+        player.playerLocation = gameObject.transform.position;
+        player.sceneToSpawnBack = SceneManager.GetActiveScene().name;
+
+        SceneManager.LoadScene("Combat");
     }
 }

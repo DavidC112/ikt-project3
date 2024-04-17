@@ -47,4 +47,28 @@ public class Unit : MonoBehaviour
         else 
             return false;
     }
+
+    public void Heal(int healingAmount)
+    {
+        if (currentHealth + healingAmount > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+            currentHealth += healingAmount;
+
+        SetHP(currentHealth);
+    }
+
+    public void AddPP(int addPP)
+    {
+        if (currentPP + addPP > maxPP)
+        {
+            currentPP = maxPP;
+        }
+        else
+            currentPP += addPP;
+
+        SetPP(currentPP);
+    }
 }

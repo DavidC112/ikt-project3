@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,15 +17,19 @@ public class CombatManager : MonoBehaviour
     public List<GameObject> alivePlayerUnit;
     public GameObject currentUnitInTurn;
     public CombatUI combatUI;
+    public TMP_Text winGold, loseGold, currentAmount;
+    public GameObject winLoseScreen;
+    public int _kobambiValue, _meggypaleszValue, _abszintValue;
     public static CombatManager instance;
+    public static bool bossDead = false;
     public CombatState state;
     public AttackType attackType;
+    public Item item;
 
     private void Start()
     {
-        SpawnInUnits();
-        UpdateCombatState(CombatState.PlayerTurn);
 
+        UpdateCombatState(CombatState.SpawningUnits);
     }
     private void Awake()
     {
@@ -38,7 +43,9 @@ public class CombatManager : MonoBehaviour
         switch (newState)
         {
             case CombatState.SpawningUnits:
-                
+                player.combat = true;
+                SpawnInUnits();
+                UpdateCombatState(CombatState.PlayerTurn);
                 break;
             case CombatState.PlayerTurn:
                 combatUI.VisalStateChange(true);
@@ -48,12 +55,21 @@ public class CombatManager : MonoBehaviour
                 break;
             case CombatState.Win:
                 Debug.Log("WIN");
-                player.combat = true;
-                SceneManager.LoadScene(player.sceneToSpawnBack);
+                if (PlayerInteract.boss == true)
+                {
+                    PlayerPrefs.SetInt("MainKey", 1);
+                    bossDead = true;
+                }
+                ShowWinScreen();
                 StopAllCoroutines();
                 break;
             case CombatState.Lose:
                 Debug.Log("LOSE");
+                if (PlayerInteract.boss == true)
+                {
+                    player.playerLocation = new Vector2(-1.6f, -3.63f);
+                }
+                ShowLoseScreen();
                 StopAllCoroutines();
                 break;
         }
@@ -84,12 +100,21 @@ public class CombatManager : MonoBehaviour
 
 
         //Instantiate enemy(s)
-        int enemyNumber = Random.Range(0, enemyPosition.Count);
-        for (int i = 0; i < enemyNumber+1; i++) 
+        if (PlayerInteract.boss == true)
         {
-            int enemyIndex = Random.Range(0, enemyPrefabList.Count);
-            unitsInCombat.Add(Instantiate(enemyPrefabList[enemyIndex], enemyPosition[i].transform));
-            aliveEnemys.Add(unitsInCombat[unitsInCombat.Count-1]);
+            unitsInCombat.Add(Instantiate(enemyPrefabList[2], enemyPosition[0].transform));
+            aliveEnemys.Add(unitsInCombat[unitsInCombat.Count - 1]);
+
+        }
+        else
+        {
+            int enemyNumber = Random.Range(0, enemyPosition.Count);
+            for (int i = 0; i < enemyNumber + 1; i++)
+            {
+                int enemyIndex = Random.Range(0, enemyPrefabList.Count - 1);
+                unitsInCombat.Add(Instantiate(enemyPrefabList[enemyIndex], enemyPosition[i].transform));
+                aliveEnemys.Add(unitsInCombat[unitsInCombat.Count - 1]);
+            }
         }
 
         currentUnitInTurn = unitsInCombat[0];
@@ -124,18 +149,18 @@ public class CombatManager : MonoBehaviour
                 case 1:
                     foreach (var enemy in unitsInCombat.Skip(2))
                     {
-                        if(enemy.activeSelf == false)
+                        if (enemy.activeSelf == false)
                         {
                             n++;
                         }
-                        if(n == unitsInCombat.Count - 2)
+                        if (n == unitsInCombat.Count - 2)
                         {
                             Debug.Log("Win");
                             return CombatState.Win;
                         }
                     }
                     break;
-                    
+
             }
         }
         if (currentUnitInTurn == unitsInCombat[0] || currentUnitInTurn == unitsInCombat[1])
@@ -146,59 +171,11 @@ public class CombatManager : MonoBehaviour
         {
             return CombatState.EnemyTurn;
         }
-        
+
     }
 
     public IEnumerator EnemyTurns()
-    {   //valamit csinalnak az enemyk
-        //for (int i = 2; i < unitsInCombat.Count; i++)
-        //{
-        //    currentUnitInTurn = unitsInCombat[i];
-        //    if (currentUnitInTurn.activeSelf == true || state != CombatState.Lose || state != CombatState.Win)
-        //    {
-        //        Unit currentUnit = currentUnitInTurn.GetComponent<Unit>();
-        //        int enemyDamage = (currentUnit.player.strength + currentUnit.player.dexterity + 15) / 8;
-
-        //        List<GameObject> damagableCharacter = new();
-
-        //        for (int j = 0; j < 2; j++)
-        //        {
-        //            if (unitsInCombat[j].activeSelf == true)
-        //            {
-        //                damagableCharacter.Add(unitsInCombat[j]);
-        //            }
-        //            if(player.isTeamMate == false)
-        //            {
-        //                j++;
-        //            }
-        //        }
-
-        //        if (damagableCharacter.Count == 0)
-        //        {
-        //            UpdateCombatState(CombatState.Lose);
-        //            yield return 0;
-        //        }
-        //        else
-        //        {
-        //            int rnd = Random.Range(0, damagableCharacter.Count);
-        //            Debug.Log(rnd + "indexu playercharacter");
-
-        //            combatUI.VisalStateChange(true);
-
-        //            if (damagableCharacter[rnd].GetComponent<Unit>().TakeDamage(enemyDamage))
-        //            {
-        //                damagableCharacter[rnd].SetActive(false);
-        //            }
-        //            damagableCharacter[rnd].GetComponent<Unit>().SetHP(damagableCharacter[rnd].GetComponent<Unit>().currentHealth);
-
-        //            combatUI.VisalStateChange(false);
-
-        //            yield return new WaitForSeconds(1);
-        //        }
-        //    }
-
-
-        //}
+    {
         if (state == CombatState.Lose || state == CombatState.Win)
         {
             yield break;
@@ -227,7 +204,7 @@ public class CombatManager : MonoBehaviour
 
                 combatUI.VisalStateChange(true);
 
-                if (alivePlayerUnit[rnd].GetComponent<Unit>().TakeDamage(enemyDamage))
+                if (alivePlayerUnit[rnd].GetComponent<Unit>().TakeDamage(enemyDamage - (alivePlayerUnit[rnd].GetComponent<Unit>().player.endurance / 3)))
                 {
                     UnalivePlayerUnit(rnd);
                 }
@@ -239,11 +216,11 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        if (unitsInCombat[0].activeSelf == true) 
+        if (unitsInCombat[0].activeSelf == true)
         {
             currentUnitInTurn = unitsInCombat[0];
         }
-        else if (unitsInCombat[1].activeSelf == true && unitsInCombat != null)
+        else if (player.isTeamMate == true && unitsInCombat[1].activeSelf == true)
         {
             currentUnitInTurn = unitsInCombat[1];
         }
@@ -260,6 +237,30 @@ public class CombatManager : MonoBehaviour
             }
         }
     }
+
+    void ShowWinScreen()
+    {
+        winLoseScreen.transform.GetChild(1).gameObject.SetActive(true);
+        winGold.text = (unitsInCombat.Count - 2).ToString();
+        PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold") + unitsInCombat.Count - 2);
+        currentAmount.text = PlayerPrefs.GetInt("gold").ToString();
+        currentAmount.gameObject.SetActive(true);
+    }
+
+    void ShowLoseScreen()
+    {
+        winLoseScreen.transform.GetChild(0).gameObject.SetActive(true);
+        loseGold.text = (unitsInCombat.Count- 2).ToString();
+        PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold") - unitsInCombat.Count - 2);
+        currentAmount.text = PlayerPrefs.GetInt("gold").ToString();
+        currentAmount.gameObject.SetActive(true);
+    }
+
+    public void LoadOutOfCombat()
+    {
+        SceneManager.LoadScene(player.sceneToSpawnBack);
+    }
+
 }
 
 
@@ -276,5 +277,13 @@ public enum AttackType
 {
     None,
     Attack,
-    Ability
+    Ability,
+    Items
+}
+public enum Item
+{
+    None,
+    Kobambi,
+    MeggyPalesz,
+    Abszint
 }

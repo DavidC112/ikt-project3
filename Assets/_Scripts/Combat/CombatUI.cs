@@ -13,6 +13,14 @@ public class CombatUI : MonoBehaviour
         _teammate = combatManager.characterPrefab.GetComponent<Unit>().player.isTeamMate;
     }
 
+    private void Update()
+    {
+        if (combatManager.attackType == AttackType.Items && Input.GetMouseButton(1))
+        {
+            _canvas.transform.GetChild(2).gameObject.SetActive(false);
+        }
+    }
+
     public void VisalStateChange(bool state)
     {
         _canvas = combatManager.currentUnitInTurn.transform.GetChild(0).gameObject;
@@ -31,5 +39,10 @@ public class CombatUI : MonoBehaviour
     public void OnItem()
     {
         Debug.Log("Item");
+        CombatManager.instance.attackType = AttackType.Items;
+        _canvas = CombatManager.instance.currentUnitInTurn.transform.GetChild(0).gameObject;
+        _canvas.transform.GetChild(2).gameObject.SetActive(true);
+        CombatManager.instance.currentUnitInTurn.GetComponent<Items>().SetItemValues();
+
     }
 }

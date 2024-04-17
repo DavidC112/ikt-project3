@@ -23,4 +23,6 @@ public class Player : ScriptableObject
 
     public bool isTeamMate = false;
     public GameObject teamMate;
+
+    public bool meggyPalesz = false;
 }

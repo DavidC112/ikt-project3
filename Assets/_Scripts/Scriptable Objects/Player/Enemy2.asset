@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587e4a1bd1f6947498a0884df9b3a5f7, type: 3}
   m_Name: Enemy2
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  animation: {fileID: 0}
   playerName: 
-  vigor: 10
-  strength: 10
-  dexterity: 10
-  endurance: 10
-  intelligence: 10
-  maxHealth: 0
-  currentHealth: 0
+  vigor: 15
+  strength: 15
+  dexterity: 15
+  endurance: 15
+  intelligence: 15
+  playerLocation: {x: 0, y: 0}
+  sceneToSpawnBack: 
+  combat: 0
   meleeWeapon: {fileID: 0}
   isTeamMate: 0
   teamMate: {fileID: 0}
+  meggyPalesz: 0

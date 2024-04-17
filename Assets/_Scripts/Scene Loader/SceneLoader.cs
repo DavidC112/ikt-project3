@@ -48,8 +48,9 @@ public class SceneLoader : MonoBehaviour
     {
         PlayerPrefs.SetFloat("PlayerPosX", playerPos.x);
         PlayerPrefs.SetFloat("PlayerPosY", playerPos.y);
-        SceneManager.LoadScene(sceneToload);
         LoadToBucka(sceneToload);
         LoadToTreasury();
+        SceneManager.LoadScene(sceneToload);
+        
     }
 }

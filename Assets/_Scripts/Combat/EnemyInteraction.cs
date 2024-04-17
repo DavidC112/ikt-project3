@@ -40,12 +40,14 @@ public class EnemyInteraction : MonoBehaviour
             {
                 damageToEnemy = (currentUnit.player.strength + currentUnit.player.dexterity + currentUnit.player.meleeWeapon.weaponDamage) / 5;
 
+                PowerOfMeggyPalesz(damageToEnemy);
+
                 StartCoroutine(AttackEnemy());
 
             }
         }
 
-        //TODO: ha nincs mar tobb pp akkor nem lehet hasznalni
+        
         else if (combatManager.attackType == AttackType.Ability && combatManager.state == CombatState.PlayerTurn && currentUnit.currentPP > 20)
         {
             
@@ -53,8 +55,10 @@ public class EnemyInteraction : MonoBehaviour
             bars.SetActive(true);
             if (Input.GetMouseButtonDown(0))
             {
-                //Egynelõre csak nagyobbat üt, de majd az lesz a terv hogy legyen külön ability ami kicsit mast csinal -> ha lesz idõmxd
-                damageToEnemy = (currentUnit.player.strength + currentUnit.player.dexterity + currentUnit.player.meleeWeapon.weaponDamage) / 4;
+                
+                damageToEnemy = (currentUnit.player.strength + currentUnit.player.dexterity + currentUnit.player.meleeWeapon.weaponDamage + currentUnit.player.intelligence) / 4;
+
+                PowerOfMeggyPalesz(damageToEnemy);
 
                 currentUnit.currentPP -= 20;
                 currentUnit.SetPP(currentUnit.currentPP);
@@ -74,11 +78,11 @@ public class EnemyInteraction : MonoBehaviour
         bars.SetActive(false);
     }
 
-    public IEnumerator AttackEnemy() 
+    public IEnumerator AttackEnemy()
     {
         combatManager.attackType = AttackType.None;
         highlight.SetActive(false);
-        
+
 
         if (combatManager.currentUnitInTurn == combatManager.unitsInCombat[0] && combatManager.unitsInCombat[1] != null)
         {
@@ -93,7 +97,7 @@ public class EnemyInteraction : MonoBehaviour
                 combatManager.UpdateCombatState(CombatState.EnemyTurn);
                 combatManager.currentUnitInTurn = combatManager.unitsInCombat[2];
             }
-            
+
             combatUI.VisalStateChange(true);
         }
         else
@@ -106,7 +110,7 @@ public class EnemyInteraction : MonoBehaviour
         }
 
         //Ha elfogy enemy hpja akkor deaktivalva lesz az enemy  gamobject
-        if (selectedEnemy.GetComponent<Unit>().TakeDamage(damageToEnemy))
+        if (selectedEnemy.GetComponent<Unit>().TakeDamage(damageToEnemy - (selectedEnemy.GetComponent<Unit>().player.endurance / 3)))
         {
             UnAliveEnemy();
         }
@@ -128,6 +132,15 @@ public class EnemyInteraction : MonoBehaviour
             {
                 combatManager.aliveEnemys.RemoveAt(i);
             }
+        }
+    }
+
+    void PowerOfMeggyPalesz(int damage)
+    {
+        if (currentUnit.player.meggyPalesz)
+        {
+            damage += 5;
+            currentUnit.player.meggyPalesz = false;
         }
     }
 }
