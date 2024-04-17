@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key1: 0
   key2: 0
+  MainKey: 0
   sceneToload: LakeScene
   playerPos: {x: 14.9, y: -34.5}
 --- !u!61 &24444506
@@ -788,6 +789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key1: 0
   key2: 0
+  MainKey: 0
   sceneToload: ForestScene
   playerPos: {x: 6.43, y: -22}
 --- !u!61 &1392571983
@@ -32285,6 +32287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key1: 0
   key2: 0
+  MainKey: 0
   sceneToload: BuckaScene
   playerPos: {x: -1, y: -14}
 --- !u!61 &1866492888
@@ -44354,8 +44357,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key1: 0
   key2: 0
+  MainKey: 0
   sceneToload: TownScene
-  playerPos: {x: 0, y: 0}
+  playerPos: {x: 162, y: 153}
 --- !u!61 &2142258494
 BoxCollider2D:
   m_ObjectHideFlags: 0

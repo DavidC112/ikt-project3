@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     //Loads to a specified scene
-    public int key1, key2;
+    public int key1, key2, MainKey;
     void Update()
     {
         key1 = PlayerPrefs.GetInt("key1");
         key2 = PlayerPrefs.GetInt("key2");
+        MainKey = PlayerPrefs.GetInt("MainKey");
     }
 
     public void LoadSceneTo(string scene)
@@ -20,9 +21,17 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadToBucka(string scenename)
     {
-        if(key1 == 1 && key2 == 1) 
+        if(key1 == 1 && key2 == 1 && MainKey == 0) 
         {
             SceneManager.LoadScene(scenename);
+        }
+    }
+
+    public void LoadToTreasury()
+    {
+        if(MainKey == 1)
+        {  
+            SceneManager.LoadScene("BuckaTreasureScene"); 
         }
     }
 
@@ -41,5 +50,6 @@ public class SceneLoader : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerPosY", playerPos.y);
         SceneManager.LoadScene(sceneToload);
         LoadToBucka(sceneToload);
+        LoadToTreasury();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -103,10 +103,22 @@ public class PlayerInteract : MonoBehaviour
 
     }
 
+
+    public void Treasure()
+    {
+        int treasure = PlayerPrefs.GetInt("treasure");
+         if(treasure > 0)
+        {
+            SceneManager.LoadScene("End");
+        }
+    }
+
     public void Csoves()
     {
         player.isTeamMate = true;
-    }     
+        Destroy(gameObject);
+        Quit();
+    }
 
     public void Quit()
     {

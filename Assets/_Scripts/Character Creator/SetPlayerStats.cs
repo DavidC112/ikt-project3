@@ -34,11 +34,16 @@ public class SetPlayerStats : MonoBehaviour
         player.teamMate = null;
 
         PlayerPrefs.SetInt("gold", 20);
+        PlayerPrefs.SetInt("kobambi", 0);
+        PlayerPrefs.SetInt("meggypalesz", 0);
+        PlayerPrefs.SetInt("abszint", 0);
         PlayerPrefs.SetFloat("PlayerPosX", 2.99f);
         PlayerPrefs.SetFloat("PlayerPosY", -0.7f);
         PlayerPrefs.SetInt("key1", 0);
         PlayerPrefs.SetInt("key2", 0);
+        PlayerPrefs.SetInt("treasure", 0);
         SceneManager.LoadScene("TownHall");
+        PlayerPrefs.SetInt("MainKey", 0);
     }
     string GetNameFromInputField()
     {
