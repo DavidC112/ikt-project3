@@ -8,6 +8,7 @@ TagManager:
   - Test
   - Wall
   - boss
+  - Gold
   layers:
   - Default
   - TransparentFX

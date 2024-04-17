@@ -117,7 +117,7 @@ public class PlayerInteract : MonoBehaviour
         int treasure = PlayerPrefs.GetInt("treasure");
          if(treasure > 0)
         {
-            SceneManager.LoadScene("End");
+            SceneManager.LoadScene("EndScene");
         }
     }
 
