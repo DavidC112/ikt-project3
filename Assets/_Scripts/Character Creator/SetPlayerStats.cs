@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,7 +10,7 @@ public class SetPlayerStats : MonoBehaviour
     public TMP_InputField inputField;
     public Player player;
     public List<TMP_Text> statsList;
-    public AnimatorController animation;
+    public RuntimeAnimatorController animation;
     public void SetPlayerGameObjectStats()
     {
         //TODO: Valami felugro ablak, hogy kell beírni nevet
@@ -29,9 +28,9 @@ public class SetPlayerStats : MonoBehaviour
         player.intelligence = int.Parse(statsList[5].text);
         player.meleeWeapon = ChangeClass.selectedClass;
         player.animation = RaceStat.animaton;
+        player.playerLocation = new Vector2(3.04f, 0.25f);
 
         player.isTeamMate = false;
-        player.teamMate = null;
 
         PlayerPrefs.SetInt("gold", 20);
         PlayerPrefs.SetInt("kobambi", 0);
@@ -44,6 +43,7 @@ public class SetPlayerStats : MonoBehaviour
         PlayerPrefs.SetInt("treasure", 0);
         SceneManager.LoadScene("TownHall");
         PlayerPrefs.SetInt("MainKey", 0);
+
     }
     string GetNameFromInputField()
     {

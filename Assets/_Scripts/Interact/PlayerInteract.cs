@@ -81,6 +81,7 @@ public class PlayerInteract : MonoBehaviour
         {
             PlayerIsClose = true;
         }
+        other.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -90,7 +91,7 @@ public class PlayerInteract : MonoBehaviour
             PlayerIsClose = false;
             zeroText();
         }
-
+        other.gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void Gift()

@@ -3682,6 +3682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1437e1afd405c6549a02eb7512951248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  key1: 0
+  key2: 0
+  MainKey: 0
   sceneToload: 
   playerPos: {x: 0, y: 0}
 --- !u!1 &658514859
@@ -5758,6 +5761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 1450824232}
   raceStats: {fileID: 11400000, guid: f8e909f5f04b2b745a1ae24e960ce0d1, type: 2}
+  defaultRace: {fileID: 0}
   statsList:
   - {fileID: 1527279077}
   - {fileID: 256975625}
@@ -8210,6 +8214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 1450824232}
   raceStats: {fileID: 11400000, guid: 21f31fec8bd914f458a386059b2ba87e, type: 2}
+  defaultRace: {fileID: 0}
   statsList:
   - {fileID: 1527279077}
   - {fileID: 256975625}
@@ -9236,6 +9241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 1450824232}
   raceStats: {fileID: 11400000, guid: 9ab9d2be66fcb9c4089e1d8ddcd0ec48, type: 2}
+  defaultRace: {fileID: 11400000, guid: 9ab9d2be66fcb9c4089e1d8ddcd0ec48, type: 2}
   statsList:
   - {fileID: 1527279077}
   - {fileID: 256975625}
@@ -9616,6 +9622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 1450824232}
   raceStats: {fileID: 11400000, guid: 742092109df1fc047a6e620a72b79a3a, type: 2}
+  defaultRace: {fileID: 0}
   statsList:
   - {fileID: 1527279077}
   - {fileID: 256975625}

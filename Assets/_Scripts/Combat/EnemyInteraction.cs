@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,7 +59,7 @@ public class EnemyInteraction : MonoBehaviour
 
                 PowerOfMeggyPalesz(damageToEnemy);
 
-                currentUnit.currentPP -= 20;
+                currentUnit.currentPP -= 10;
                 currentUnit.SetPP(currentUnit.currentPP);
 
                 StartCoroutine(AttackEnemy());

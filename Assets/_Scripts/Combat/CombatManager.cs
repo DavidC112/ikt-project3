@@ -242,7 +242,7 @@ public class CombatManager : MonoBehaviour
     {
         winLoseScreen.transform.GetChild(1).gameObject.SetActive(true);
         winGold.text = (unitsInCombat.Count - 2).ToString();
-        PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold") + unitsInCombat.Count - 2);
+        PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold") + (unitsInCombat.Count - 2));
         currentAmount.text = PlayerPrefs.GetInt("gold").ToString();
         currentAmount.gameObject.SetActive(true);
     }
@@ -251,7 +251,7 @@ public class CombatManager : MonoBehaviour
     {
         winLoseScreen.transform.GetChild(0).gameObject.SetActive(true);
         loseGold.text = (unitsInCombat.Count- 2).ToString();
-        PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold") - unitsInCombat.Count - 2);
+        PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold") - (unitsInCombat.Count - 2));
         currentAmount.text = PlayerPrefs.GetInt("gold").ToString();
         currentAmount.gameObject.SetActive(true);
     }

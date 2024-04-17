@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerStats")]
 public class Player : ScriptableObject
 {
-    public AnimatorController animation;
+    public RuntimeAnimatorController animation;
 
     public string playerName;
     public int vigor;

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation: {fileID: 0}
   playerName: 
-  vigor: 30
-  strength: 30
-  dexterity: 30
-  endurance: 35
+  vigor: 25
+  strength: 20
+  dexterity: 15
+  endurance: 15
   intelligence: 1
   playerLocation: {x: 0, y: 0}
   sceneToSpawnBack: 

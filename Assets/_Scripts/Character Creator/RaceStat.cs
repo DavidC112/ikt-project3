@@ -1,19 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RaceStat : MonoBehaviour
 {
-    public Image playerSprite; 
+    public Image playerSprite;
     public RaceStats raceStats;
+    public RaceStats defaultRace;
     public List<TMP_Text> statsList;
     public List<GameObject> statGameObjects;
     public List<int> minStatValue;
     private int remainingPoints;
-    public static AnimatorController animaton;
+    public static RuntimeAnimatorController animaton;
+
+    private void Start()
+    {
+        animaton = defaultRace.raceAnimation;
+    }
 
     public void SetRaceStat()
     {

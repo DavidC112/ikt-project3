@@ -19,11 +19,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    public void LoadToBucka(string scenename)
+    public void LoadToBucka()
     {
         if(key1 == 1 && key2 == 1 && MainKey == 0) 
         {
-            SceneManager.LoadScene(scenename);
+            SceneManager.LoadScene("BuckaScene");
         }
     }
 
@@ -48,7 +48,7 @@ public class SceneLoader : MonoBehaviour
     {
         PlayerPrefs.SetFloat("PlayerPosX", playerPos.x);
         PlayerPrefs.SetFloat("PlayerPosY", playerPos.y);
-        LoadToBucka(sceneToload);
+        LoadToBucka();
         LoadToTreasury();
         SceneManager.LoadScene(sceneToload);
         
