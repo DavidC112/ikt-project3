@@ -2850,7 +2850,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -499925566, guid: 45b4681be4234b34f80fde3563073cf5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2878,9 +2878,7 @@ MonoBehaviour:
   kobambi: {fileID: 8811757529642005841}
   meggypalesz: {fileID: 7046181482574377065}
   abszint: {fileID: 3637154580207248545}
-  _kobambiValue: 0
-  _meggypaleszValue: 0
-  _abszintValue: 0
+  selectedPlayer: {fileID: 0}
   itemButton: {fileID: 0}
 --- !u!61 &6741259079413264691
 BoxCollider2D:
